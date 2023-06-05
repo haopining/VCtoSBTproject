@@ -1,14 +1,12 @@
 # Smart Contracts
 
-This project demonstrates how to add smart contracts to your project using [Hardhat](https://hardhat.org/docs). It provides a sample `Message` contract, a test and deployment scripts.
+This project demonstrates how to add smart contracts to your project using [Hardhat](https://hardhat.org/docs).
 
 Try running some of the following tasks:
 
 ```
+yarn add --dev hardhat
 yarn build
-yarn deploy
-yarn test
-yarn coverage
 ```
 
 ## Deploy
@@ -16,10 +14,9 @@ yarn coverage
 Once you're ready to deploy your contracts, setup a deployer account using `DEPLOYER_KEY` and try to run e.g.
 
 ```
-yarn deploy --network sepolia
+yarn deploy --network goerli
 ```
 
-Note that you need testnet Ethers for that. More info and faucet links can be found on [Sepolia Dev](https://sepolia.dev/). You can set up different networks using [Hardhat's network configuration](https://hardhat.org/hardhat-runner/docs/config#networks-configuration).
 
 ## Verify
 

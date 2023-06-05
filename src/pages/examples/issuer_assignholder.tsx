@@ -1,4 +1,4 @@
-import { useAccount, useContractWrite, usePrepareContractWrite, useWaitForTransaction, useNetwork } from 'wagmi'
+import { useAccount, useContractWrite, usePrepareContractWrite, useWaitForTransaction, useNetwork, Address } from 'wagmi'
 import { Button, Heading, Text, ListItem, UnorderedList } from '@chakra-ui/react'
 import { NextSeo } from 'next-seo'
 import { LinkComponent } from 'components/layout/LinkComponent'
@@ -6,17 +6,16 @@ import * as React from 'react'
 
 
 
-function MintNFT({HashVC, VCurl}: { HashVC: string, VCurl: string }) {
+function AssignOwner({HashVC, HolderDID}: { HashVC: string, HolderDID: Address }) {
   const { chain } = useNetwork()
-
 
   const prepareContractWrite = usePrepareContractWrite({
     // VCtoSBT example
     address: '0x6984358AA660A7F6Bbf548057b6f77bA73eF9d21',
     abi: [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"approved","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"approve","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"HashVC","type":"string"},{"internalType":"address","name":"holderDID","type":"address"}],"name":"assignVCSBTOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"burn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"HashVC","type":"string"}],"name":"deleteVCSBTOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getApproved","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getSBTURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getSBTinfo","outputs":[{"internalType":"string","name":"","type":"string"},{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"HashVC","type":"string"},{"internalType":"string","name":"tokenURI","type":"string"}],"name":"mint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"HashVC","type":"string"},{"internalType":"address","name":"newholderDID","type":"address"}],"name":"modifyVCSBTOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"bytes","name":"data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"tokenURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"transferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"}],
-    functionName: 'mint',
-    args: [HashVC, VCurl],
-    enabled: Boolean(HashVC && VCurl),
+    functionName: 'assignVCSBTOwner',
+    args: [HashVC, HolderDID],
+    enabled: Boolean(HashVC && HolderDID),
 
 
   })
@@ -37,21 +36,22 @@ function MintNFT({HashVC, VCurl}: { HashVC: string, VCurl: string }) {
         disabled={waitForTransaction.isLoading || contractWrite.isLoading || !contractWrite.write}
         mt={4}
         onClick={handleSendTransation}>
-        {waitForTransaction.isLoading ? 'Minting SBT...' : contractWrite.isLoading ? 'Check your wallet' : 'Mint SBT'}
+        {waitForTransaction.isLoading ? 'Assigning Owner...' : contractWrite.isLoading ? 'Check your wallet' : 'Assign Owner'}
       </Button>
-      {waitForTransaction.isError && (
-        <div>
-          <Text mt={2} fontSize="lg">
-            Successfully Minted SBT!
-          </Text>
-          <Text fontSize="lg" fontWeight="bold">
-            <LinkComponent href={`https://goerli.etherscan.io/tx/${contractWrite.data?.hash}`}>Check on block explorer</LinkComponent>
-          </Text>
-        </div>)}
       {waitForTransaction.isSuccess && (
         <div>
+          <Text mt={2} fontSize="lg">
+            Successfully Assign!
+          </Text>
+          <Text fontSize="lg" fontWeight="bold">
+            <LinkComponent href={`${chain?.blockExplorers?.default.url}/tx/${contractWrite.data?.hash}`}>Check on block explorer</LinkComponent>
+          </Text>
+        </div>
+      )}
+      {waitForTransaction.isError && (
+        <div>
           <Text mt={2} color="red" fontSize="lg">
-            Error minting SBT
+            Error assign
           </Text>
           <Text color="red" fontSize="lg" fontWeight="bold">
             {waitForTransaction.error?.message}
@@ -62,24 +62,23 @@ function MintNFT({HashVC, VCurl}: { HashVC: string, VCurl: string }) {
   )
 }
 
-export default function MintNFTExample() {
+export default function AssignOwnerExample() {
   const { isConnected } = useAccount()
   const [HashVC, setHashVC] = React.useState('')
-  const [VCurl, setVCurl] = React.useState('')
+  const [HolderDID, setHolderDID] = React.useState<string>('')
 
   if (isConnected) {
     return (
       <div>
-        <NextSeo title="Mint SBT" />
+        <NextSeo title="Assign Owner" />
         <Heading as="h2" fontSize="2xl" my={4}>
-          Mint Verifiable Credential to SBT
+          Assign Owner
         </Heading>
-        <p>This example shows how to mint a Verifiable Credential to SBT.</p>
 
         <><br /></>
         <UnorderedList>
           <ListItem>
-            <LinkComponent href="https://docs.openzeppelin.com/contracts/3.x/erc721">HashVerifiableCredential(used SHA256)</LinkComponent>
+            <LinkComponent href="https://emn178.github.io/online-tools/sha256.html">HashVerifiableCredential(used SHA256)</LinkComponent>
           </ListItem>
           <input
             style={{ width: '1000px', height: '40px' }}
@@ -90,20 +89,18 @@ export default function MintNFTExample() {
           />
           <><br /></>
           <ListItem>
-            <LinkComponent href="https://wagmi.sh/examples/contract-write">URL</LinkComponent>
+            <LinkComponent href="https://wagmi.sh/examples/contract-write">HolderDID</LinkComponent>
           </ListItem>
           <input
             style={{ width: '1000px', height: '40px' }}
-            id="VCurl"
-            onChange={(e) => setVCurl(e.target.value)}
-            placeholder="https://aclab.tw/membercredential/01"
-            value={VCurl}
-/>
-
-
+            id="HolderDID"
+            onChange={(e) => setHolderDID(e.target.value)}
+            placeholder="0x12345678"
+            value={HolderDID}
+          />
         </UnorderedList>
 
-        <MintNFT HashVC={HashVC} VCurl={VCurl} />
+        <AssignOwner HashVC={HashVC} HolderDID={HolderDID as Address} />
       </div>
     )
   }

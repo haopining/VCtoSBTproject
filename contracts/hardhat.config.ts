@@ -17,6 +17,7 @@ const polygonApiKey = process.env.POLYSCAN_API_KEY ?? ''
 if (!polygonApiKey) {
   console.warn('POLYSCAN_API_KEY not found in .env file. Will skip Etherscan verification')
 }
+const INFURA_API_KEY = "8874bdde17e34b68ae6e33e7ed090546";
 
 const config: HardhatUserConfig = {
   solidity: '0.8.18',
@@ -26,6 +27,7 @@ const config: HardhatUserConfig = {
       mainnet: etherscanApiKey,
       sepolia: etherscanApiKey,
       polygonMumbai: polygonApiKey,
+      goerli: etherscanApiKey
     },
   },
   networks: {
@@ -35,6 +37,11 @@ const config: HardhatUserConfig = {
     localhost: {
       chainId: 31337,
       url: 'http://127.0.0.1:8545',
+    },
+    goerli: {
+      chainId: 5,
+      url: `https://goerli.infura.io/v3/${INFURA_API_KEY}`,
+      accounts: [deployerKey as string],
     },
     sepolia: {
       chainId: 11155111,

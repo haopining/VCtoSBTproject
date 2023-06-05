@@ -1,25 +1,25 @@
 import { ethers, network, run } from 'hardhat'
 
 async function main() {
-  console.log('Deploying Message...')
+  console.log('Deploying VCtoSBT...')
 
   const args: any[] = []
-  const Message = await ethers.getContractFactory('Message')
-  const message = await Message.deploy(...args)
+  const VCtoSBT = await ethers.getContractFactory('VCtoSBT')
+  const vctosbt = await VCtoSBT.deploy(...args)
 
-  await message.deployed()
+  await vctosbt.deployed()
 
-  console.log(`Message deployed to ${message.address}`)
+  console.log(`VCtoSBT deployed to ${vctosbt.address}`)
 
   // no need to verify on localhost or hardhat
   if (network.config.chainId != 31337 && process.env.ETHERSCAN_API_KEY) {
     console.log(`Waiting for block confirmation...`)
-    await message.deployTransaction.wait(5)
+    await vctosbt.deployTransaction.wait(5)
 
     console.log('Verifying contract...')
     try {
       run('verify:verify', {
-        address: message.address,
+        address: vctosbt.address,
         constructorArguments: args,
       })
     } catch (e) {
