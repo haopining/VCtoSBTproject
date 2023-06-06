@@ -10,7 +10,7 @@ a simple project for Verifiable credential to Soulbound Token
 Issuer address: 0x58DdD58E469d9fF33d0a2e9763E7940fd5aD0776
 Holder address: 0x55Ceea9fd83798a54D16B4FA4eC63Ce5a7D751c7
 
-## Development 🛠️
+## Frontend
 
 ```bash
 npm run dev
