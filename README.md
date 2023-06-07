@@ -22,6 +22,7 @@ DEPLOYER_KEY='123' //帳戶私鑰
 ETHERSCAN_API_KEY='123' //需註冊 etherscan
 ```
 
+Run frontend server
 ```bash
 npm run dev
 # or
