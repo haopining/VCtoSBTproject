@@ -25,11 +25,3 @@ Contracts are automatically verified on Etherscan if you've set up the `ETHERSCA
 ```
 yarn verify
 ```
-
-## Wagmi CLI
-
-The front-end uses the [Wagmi CLI](https://wagmi.sh/cli/getting-started) to automatically generate types and default hooks for your contracts. You can find the generated files in `src/abi.test`.
-
-```
-yarn wagmi
-```
