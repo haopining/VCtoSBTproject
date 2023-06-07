@@ -11,6 +11,12 @@ Issuer address: 0x58DdD58E469d9fF33d0a2e9763E7940fd5aD0776
 Holder address: 0x55Ceea9fd83798a54D16B4FA4eC63Ce5a7D751c7
 
 ## Frontend
+要新增自己的 .env，如下
+# 注意：NEVER SHARE OR COMMIT YOUR PRIVATE KEYS TO GITHUB 
+NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID='12345' //與 ethereum 溝通的節點 APIkey(ex. Infura)
+DEPLOYER_KEY='123' //帳戶私鑰
+ETHERSCAN_API_KEY='123' //需註冊 etherscan
+
 
 ```bash
 npm run dev

@@ -1,6 +1,6 @@
-## Veramo Node Tutorial
-
-Example repo for Veramo Node Tutorial: [https://veramo.io/docs/node_tutorials/node_setup_identifiers](https://veramo.io/docs/node_tutorials/node_setup_identifiers)
+## Intro
+    This is an example for verifiable credential generated through the Veramo API
+    Veramo: https://veramo.io/
 
 ## Usage
 
