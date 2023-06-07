@@ -1,6 +1,8 @@
 ## Intro
-    This is an example for verifiable credential generated through the Veramo API
-    Veramo: https://veramo.io/
+
+This is an example for verifiable credential generated through the Veramo API
+    
+Veramo: https://veramo.io/
 
 ## Usage
 
