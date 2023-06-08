@@ -16,7 +16,7 @@ async function main() {
         lab: 'Applied Cryptography Lab',
         degree: '2022 Master',
         ethaddress: '0x55Ceea9fd83798a54D16B4FA4eC63Ce5a7D751c7',
-        id: 'did:web:aclab.tw/membercredential/01'
+        id: 'did:web:aclab.tw/membercredential/08'
       },
     },
     proofFormat: 'jwt',
